@@ -5,6 +5,38 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>Liste des chef d'orchestre</h1>
+
+	<a th:href="@{/api/getAllSoliste}" class="btn btn-secondary">Retour à la liste des solistes</a>
+	<a th:href="@{/api/oeuvre/getAllOeuvre}" class="btn btn-secondary">Liste des oeuvres</a>
+	<a th:href="@{/api/concert/getAllConcert}" class="btn btn-secondary">Liste des concerts</a>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Prénom</th>
+				<th scope="col">Date de naissance</th>
+				<th scope="col">Nationalité</th>
+				<th scope="col">Cachet</th>
+				<th scope="col">Oeuvres</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="chefOrchestre : listeChefOrchestre">
+				<td scope="row" th:text="${chefOrchestre.id}"></td>
+				<td th:text="${chefOrchestre.nom}"></td>
+				<td th:text="${chefOrchestre.prenom}"></td>
+				<td th:text="${chefOrchestre.dateNaissance}"></td>
+				<td th:text="${chefOrchestre.nationalite}"></td>
+				<td th:text="${chefOrchestre.cachet}"></td>
+				<td th:text="${chefOrchestre.getNomOeuvre()}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<a th:href="@{/api/chefOrchestre/formulaire}" class="btn btn-primary">Ajouter un chef d'orchestre</a>
 
 </body>
 </html>

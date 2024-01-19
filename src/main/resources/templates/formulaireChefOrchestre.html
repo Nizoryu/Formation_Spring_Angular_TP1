@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Formulaire Chef d'orchestre</title>
+</head>
+<body>
+
+	<h1>Formulaire Chef d'orchestre</h1>
+
+	<form method="post" action="saveChefOrchestre" modelAttribute="chefOrchestre">
+	  <div class="mb-3">
+	    <label for="nom" class="form-label">Nom</label>
+	    <input type="text" class="form-control" id="nom" name="nom" required>
+	  </div>
+	  <div class="mb-3">
+	    <label for="Prenom" class="form-label">Prenom</label>
+	    <input type="date" class="form-control" id="Prenom" name="Prenom" required>
+	  </div>
+	  <div class="mb-3">
+	    <label for="dateNaissance" class="form-label">Date de naissance</label>
+	    <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" required>
+	  </div>
+	  <div class="mb-3">
+	    <label for="nationalite" class="form-label">Nationalité</label>
+	    <input type="date" class="form-control" id="nationalite" name="nationalite" required>
+	  </div>
+	  <div class="mb-3">
+	    <label for="cachet" class="form-label">Cachet</label>
+	    <input type="date" class="form-control" id="cachet" name="cachet" required>
+	  </div>
+	  <div class="mb-3">
+	    <label for="commentaire" class="form-label">Commentaire</label>
+	    <input type="date" class="form-control" id="commentaire" name="commentaire" required>
+	  </div>
+	  <div class="mb-3">
+	    <label for="oeuvre" class="form-label">Sélectionner une oeuvre</label>
+	    <select class="form-select" aria-label="Default select example" id="oeuvre" name="oeuvre">
+  			<option th:each="oeuvre : ${oeuvres}" th:value="${oeuvre.id}" th:text="${oeuvre.nom}"></option>
+		</select>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Ajouter</button>
+	  <button type="reset" class="btn btn-danger">Réinitialiser</button>
+	</form>
+
+</body>
+</html>

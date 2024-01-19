@@ -30,6 +30,8 @@ public class ChefOrchestreController {
 
 	@GetMapping("/getAll")
 	public String getAllChefOrchestre(Model model) {
+		System.out.println("Test passage");
+		System.out.println(iOrchestreService.getAllChefOrchestre());
 		model.addAttribute("listeChefOrchestre", iOrchestreService.getAllChefOrchestre());
 		return "listeChefOrchestre";
 	}
