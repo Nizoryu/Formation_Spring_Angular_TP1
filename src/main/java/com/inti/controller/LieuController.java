@@ -5,10 +5,7 @@ import com.inti.service.ILieuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +31,21 @@ public class LieuController {
     @PostMapping("/saveLieu")
     public String saveLieu(@ModelAttribute("lieu") Lieu lieu){
         lieuService.saveLieu(lieu);
+
+        return "redirect:getAllLieu";
+    }
+
+    @GetMapping("/deleteLieu{id}")
+    public String deleteLieu(@PathVariable Long id) {
+        lieuService.deleteLieu(id);
+
+        return "redirect:/api/lieu/getAllLieu";
+    }
+
+    @PostMapping("/majLieu")
+    public String majLieu(@ModelAttribute("lieu") Lieu lieu) {
+        lieuService.updateLieu(lieu);
+
         return "redirect:getAllLieu";
     }
 }
