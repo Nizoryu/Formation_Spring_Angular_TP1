@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulaire d'ajout d'un lieu</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+
+	
+	<h1>Formulaire Lieu</h1>
+
+	<form method="post" action="saveLieu" modelAttribute="lieu">
+	  <div class="mb-3">
+	    <label for="nom" class="form-label">Nom</label>
+	    <input type="text" class="form-control" id="nom" name="nom" required>
+	  </div>
+	  <div class="mb-3">
+	    <label for="adresse" class="form-label">Adresse</label>
+	    <input type="text" class="form-control" id="adresse" name="adresse" required>
+	  </div>
+	  <div class="mb-3">
+	    <label for="nombreFauteuils" class="form-label">Nombre de fauteuils</label>
+	    <input type="number" class="form-control" id="nombreFauteuils" name="nombreFauteuils" required>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Ajouter</button>
+	  <button type="reset" class="btn btn-danger">Réinitialiser</button>
+	</form>
+	
+	
+	<a th:href="@{/api/oeuvre/getAllOeuvre}" class="btn btn-secondary">Retour à la liste des oeuvres</a>
 
 </body>
 </html>

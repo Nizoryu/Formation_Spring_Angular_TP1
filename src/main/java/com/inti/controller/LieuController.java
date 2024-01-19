@@ -30,6 +30,7 @@ public class LieuController {
 
     @PostMapping("/saveLieu")
     public String saveLieu(@ModelAttribute("lieu") Lieu lieu){
+    	System.out.println(lieu);
         lieuService.saveLieu(lieu);
 
         return "redirect:getAllLieu";
