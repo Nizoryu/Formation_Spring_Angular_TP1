@@ -49,4 +49,12 @@ public class OeuvreServiceImpl implements IOeuvreService {
 
 	}
 
+	@Override
+	public List<Oeuvre> getOeuvreByName(String nom) {
+		if (nom != null) {			
+			return oeuvreRepository.findByNom(nom);
+		}
+		return null;
+	}
+
 }
