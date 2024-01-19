@@ -51,4 +51,12 @@ public class SolisteServiceImpl implements ISolisteService {
 		}
 	}
 
+
+	@Override
+	public List<Soliste> getSolisteByName(String nom) {
+		if (nom != null) {
+			return solisteRepository.findByNom(nom);
+		}
+		return null;
+	}
 }

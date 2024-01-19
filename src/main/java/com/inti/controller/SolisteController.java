@@ -1,5 +1,7 @@
 package com.inti.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +42,13 @@ public class SolisteController {
 		return "listeSoliste";
 	}
 
-	@GetMapping("soliste/{id}")
-	public String getSoliste(@PathVariable Long id, Model m) {
-		Soliste soliste = iSolisteService.getSoliste(id);
-		m.addAttribute("soliste", soliste);
+	@PostMapping("getSolisteById")
+	public String getSolisteById(@RequestParam("id") Long id, Model m) {
+				
+		List<Soliste> listSolistes = new ArrayList<>(Arrays.asList(iSolisteService.getSoliste(id)));
+		m.addAttribute("listSolistes", listSolistes);
 
-		return "afficherSoliste";
+		return "listeSoliste";
 	}
 
 	@GetMapping("count")
@@ -88,4 +91,13 @@ public class SolisteController {
 
 		return "redirect:/api/getAllSoliste";
 	}
+	
+	@PostMapping("getSolisteByName")
+	public String getSolisteByName(@RequestParam("nom") String nom, Model m) {
+
+		m.addAttribute("listSolistes", iSolisteService.getSolisteByName(nom));
+
+		return "listeSoliste";
+	}
+
 }
