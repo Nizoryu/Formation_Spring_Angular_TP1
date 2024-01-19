@@ -43,6 +43,8 @@ public class Oeuvre {
 	@OneToMany(mappedBy = "oeuvre")
 	private List<Concert> concerts;
 
+	@OneToMany(mappedBy = "oeuvre")
+	private List<ChefOrchestre> chefOrchestres;
 	@Override
 	public String toString() {
 		return "Oeuvre [id=" + id + ", nom=" + nom + ", duree=" + duree + "]";
