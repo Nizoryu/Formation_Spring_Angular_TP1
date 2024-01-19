@@ -29,7 +29,7 @@ public class SolisteController {
 
 	@Autowired
 	private ISolisteRepository iSolisteRepository;
-	
+
 	@Autowired
 	private IOeuvreRepository iOeuvreRepository;
 
@@ -44,7 +44,7 @@ public class SolisteController {
 
 	@PostMapping("getSolisteById")
 	public String getSolisteById(@RequestParam("id") Long id, Model m) {
-				
+
 		List<Soliste> listSolistes = new ArrayList<>(Arrays.asList(iSolisteService.getSoliste(id)));
 		m.addAttribute("listSolistes", listSolistes);
 
@@ -64,9 +64,12 @@ public class SolisteController {
 	}
 
 	@PostMapping("saveSoliste")
-	public String saveSoliste(@ModelAttribute("soliste") Soliste soliste, @RequestParam("oeuvres")List<Long> oeuvreId) {
-		List<Oeuvre> oeuvres = iOeuvreRepository.findAllById(oeuvreId);
-		soliste.setOeuvres(oeuvres);
+	public String saveSoliste(@ModelAttribute("soliste") Soliste soliste,
+			@RequestParam(value="oeuvres", required =false) List<Long> oeuvreId) {
+		if (oeuvreId != null) {
+			List<Oeuvre> oeuvres = iOeuvreRepository.findAllById(oeuvreId);
+			soliste.setOeuvres(oeuvres);
+		}
 		iSolisteService.saveSoliste(soliste);
 		return "redirect:getAllSoliste";
 	}
@@ -77,7 +80,7 @@ public class SolisteController {
 		m.addAttribute("oeuvres", iOeuvreRepository.findAll());
 		return "formulaireUpdate";
 	}
-	
+
 	@PostMapping("majSoliste")
 	public String majSoliste(@ModelAttribute("solist") Soliste soliste) {
 		iSolisteService.updateSoliste(soliste);
@@ -91,7 +94,7 @@ public class SolisteController {
 
 		return "redirect:/api/getAllSoliste";
 	}
-	
+
 	@PostMapping("getSolisteByName")
 	public String getSolisteByName(@RequestParam("nom") String nom, Model m) {
 
