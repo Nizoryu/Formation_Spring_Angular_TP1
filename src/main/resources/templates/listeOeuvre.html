@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
+</head>
+<body>
+	<h1>Liste des oeuvres</h1>
+
+	<a th:href="@{/api/getAllSoliste}" class="btn btn-secondary">Retour à la liste des solistes</a>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Durée</th>
+				<th scope="col">Soliste(s)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="oeuvre : ${listOeuvres}">
+				<td scope="row" th:text="${oeuvre.id}"></td>
+				<td th:text="${oeuvre.nom}"></td>
+				<td th:text="${oeuvre.duree}"></td>
+				<td>
+					<ul th:if="${not #lists.isEmpty(oeuvre.solistes)}">
+						<li th:each="soliste : ${oeuvre.solistes}" th:text="${soliste.nom}"></li>
+					</ul>
+					<span th:if="${#lists.isEmpty(oeuvre.solistes)}">-</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a th:href="@{/api/oeuvre/formulaire}" class="btn btn-primary">Ajouter une oeuvre</a>
+</body>
+</html>
