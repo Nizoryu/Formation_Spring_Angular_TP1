@@ -35,7 +35,7 @@ public class LieuController {
         return "redirect:getAllLieu";
     }
 
-    @GetMapping("/deleteLieu{id}")
+    @GetMapping("/deleteLieu/{id}")
     public String deleteLieu(@PathVariable Long id) {
         lieuService.deleteLieu(id);
 
