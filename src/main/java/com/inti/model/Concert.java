@@ -1,6 +1,7 @@
 package com.inti.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,9 +31,8 @@ public class Concert {
 	@ManyToOne
 	@JoinColumn(name="oeuvre_id")
 	private Oeuvre oeuvre;
-	@ManyToOne
-	@JoinColumn(name = "lieu_id")
-	private Lieu lieu;
+	@OneToMany(mappedBy = "concert")
+	private List<Lieu> listeLieu;
 	
 	@Override
 	public String toString() {

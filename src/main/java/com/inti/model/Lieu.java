@@ -27,8 +27,9 @@ public class Lieu {
     private String nom;
     private String adresse;
     private Long nombreFauteuils;
-    @OneToMany(mappedBy = "lieu")
-    private List<Concert> concerts;
+    @ManyToOne()
+    @JoinColumn(name = "concert_id")
+    private Concert concert;
 
     @Override
     public String toString(){
