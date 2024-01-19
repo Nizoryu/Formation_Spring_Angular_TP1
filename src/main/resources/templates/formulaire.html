@@ -29,7 +29,6 @@
 	  <div class="mb-3">
 	    <label for="oeuvre" class="form-label">Sélectionner une ou plusieurs oeuvres</label>
 	    <select multiple class="form-select" aria-label="Default select example" id="oeuvres" name="oeuvres">
-  			<option selected>Sélectionner une ou plusieurs oeuvres</option>
   			<option th:each="oeuvre : ${oeuvres}" th:value="${oeuvre.id}" th:text="${oeuvre.nom}"></option>
 		</select>
 	  </div>
