@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.inti.model.Concert;
+import com.inti.model.Oeuvre;
 import com.inti.repository.IOeuvreRepository;
 import com.inti.service.IConcertService;
 
@@ -41,9 +43,10 @@ public class ConcertController {
 	}
 	
 	@PostMapping("saveConcert")
-	public String saveConcert(@ModelAttribute("oeuvre") Concert oeuvre) {
-
-		iConcertService.saveConcert(oeuvre);
+	public String saveConcert(@ModelAttribute("concert") Concert concert, @RequestParam("oeuvre")Long oeuvreId) {
+		Oeuvre oeuvre = iOeuvreRepository.getReferenceById(oeuvreId);
+		concert.setOeuvre(oeuvre);
+		iConcertService.saveConcert(concert);
 		return "redirect:getAllConcert";
 	}
 	
