@@ -2,13 +2,7 @@ package com.inti.model;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +30,9 @@ public class Concert {
 	@ManyToOne
 	@JoinColumn(name="oeuvre_id")
 	private Oeuvre oeuvre;
+	@ManyToOne
+	@JoinColumn(name = "lieu_id")
+	private Lieu lieu;
 	
 	@Override
 	public String toString() {
