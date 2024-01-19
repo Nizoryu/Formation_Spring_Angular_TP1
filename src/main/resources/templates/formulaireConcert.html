@@ -18,6 +18,12 @@
 	    <label for="dateConcert" class="form-label">Date du concert</label>
 	    <input type="date" class="form-control" id="dateConcert" name="dateConcert" required>
 	  </div>
+	  <div class="mb-3">
+	    <label for="oeuvre" class="form-label">Sélectionner une oeuvre</label>
+	    <select class="form-select" aria-label="Default select example" id="oeuvre" name="oeuvre">
+  			<option th:each="oeuvre : ${oeuvres}" th:value="${oeuvre.id}" th:text="${oeuvre.nom}"></option>
+		</select>
+	  </div>
 	  <button type="submit" class="btn btn-primary">Ajouter</button>
 	  <button type="reset" class="btn btn-danger">Réinitialiser</button>
 	</form>

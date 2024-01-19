@@ -34,6 +34,13 @@ public class Concert {
 	@OneToMany(mappedBy = "concert")
 	private List<Lieu> listeLieu;
 	
+	public String getNomOeuvre() {
+		if(this.oeuvre !=null) {
+			return this.oeuvre.getNom();			
+		}
+		return null;
+	}
+	
 	@Override
 	public String toString() {
 		return "Concert [id=" + id + ", nom=" + nom + ", dateConcert=" + dateConcert + "]";
