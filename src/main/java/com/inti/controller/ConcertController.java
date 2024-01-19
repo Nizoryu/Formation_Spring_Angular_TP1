@@ -52,14 +52,14 @@ public class ConcertController {
 	
 	@GetMapping("majConcert/{id}")
 	public String majConcert(@PathVariable Long id, Model m) {
-		m.addAttribute("soliste", iConcertService.getConcert(id));
+		m.addAttribute("concert", iConcertService.getConcert(id));
 		m.addAttribute("oeuvres", iOeuvreRepository.findAll());
 		return "formulaireUpdate";
 	}
 	
 	@PostMapping("majConcert")
-	public String majConcert(@ModelAttribute("solist") Concert soliste) {
-		iConcertService.updateConcert(soliste);
+	public String majConcert(@ModelAttribute("concert") Concert concert) {
+		iConcertService.updateConcert(concert);
 
 		return "redirect:getAllConcert";
 	}
