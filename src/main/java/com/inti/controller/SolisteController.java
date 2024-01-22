@@ -21,7 +21,7 @@ import com.inti.repository.ISolisteRepository;
 import com.inti.service.ISolisteService;
 
 @Controller
-@RequestMapping("api")
+@RequestMapping("soliste")
 public class SolisteController {
 
 	@Autowired
